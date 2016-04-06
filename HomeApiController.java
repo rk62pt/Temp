@@ -27,7 +27,7 @@ public class HomeApiController {
 		HomeVO home = new HomeVO();
 		String[] _cntList = new String[cnt];
 		for(int i = 0 ; i< _cntList.length;i++){
-			_cntList[i] = "test"+i;
+			_cntList[i] = "\"test"+i+"\"";
 		}
 		home.setMessage("成功");
 		home.setStatus("success");
