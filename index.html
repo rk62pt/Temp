@@ -5,6 +5,41 @@
 <title>Insert title here</title>
 </head>
 <body>
-hello world
+<div id="demo"><h2>Let AJAX change this text</h2></div>
+<button type="button" onclick="loadApi()">Change Content</button>
+<div id="divList"></div>
+<div>size:<input type="text" id="txtCnt" /></div> 
+<button type="button" onclick="loadList()">getList</button>
+
+<script>
+function loadApi() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+      var jsonObj = JSON.parse(xhttp.responseText);
+      document.getElementById("demo").innerHTML = jsonObj.body;
+    }
+  };
+  xhttp.open("GET", "home/getTitle", true);
+  xhttp.send();
+}
+
+function loadList(){
+	var cnt = document.getElementById("txtCnt").value;
+	if(!cnt){
+		alert("size is empty!!!");
+		return;
+	}
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+	    if (xhttp.readyState == 4 && xhttp.status == 200) {
+	      var jsonObj = JSON.parse(xhttp.responseText);
+	      document.getElementById("divList").innerHTML = jsonObj.body;
+	    }
+	  };
+	  xhttp.open("GET", "home/getList/"+cnt, true);
+	  xhttp.send();
+}
+</script>
 </body>
 </html>
