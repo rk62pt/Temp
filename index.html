@@ -34,7 +34,15 @@ function loadList(){
 	xhttp.onreadystatechange = function() {
 	    if (xhttp.readyState == 4 && xhttp.status == 200) {
 	      var jsonObj = JSON.parse(xhttp.responseText);
-	      document.getElementById("divList").innerHTML = jsonObj.body;
+	      
+	      var bodyArray = JSON.parse(jsonObj.body);
+	      var divList = document.getElementById("divList");
+	      for(var i=0 ;i<bodyArray.length;i++){
+	    	  console.log(bodyArray[i]);
+	    	  var elDiv = document.createElement('div');
+	    	  elDiv.innerHTML = bodyArray[i];
+	    	  divList.appendChild(elDiv);
+	      }
 	    }
 	  };
 	  xhttp.open("GET", "home/getList/"+cnt, true);
