@@ -35,7 +35,7 @@ function loadList(){
 	    if (xhttp.readyState == 4 && xhttp.status == 200) {
 	      var jsonObj = JSON.parse(xhttp.responseText);
 	      
-	      var bodyArray = JSON.parse(jsonObj.body);
+	      var bodyArray = jsonObj.body;
 	      var divList = document.getElementById("divList");
 	      for(var i=0 ;i<bodyArray.length;i++){
 	    	  console.log(bodyArray[i]);
